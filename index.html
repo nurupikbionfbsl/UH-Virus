@@ -74,7 +74,7 @@
 
             <div class="ml-auto sm:ml-0 flex items-center gap-2">
                 <button id="btn-open-teacher-dashboard" class="px-3 py-1.5 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-400/40 text-amber-200 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5">
-                    <i class="fa-solid fa-user-shield text-amber-400"></i>
+                    <i class="fa-solid fa-lock text-amber-400"></i>
                     <span>Dashboard Guru</span>
                 </button>
             </div>
@@ -497,6 +497,43 @@
                     <span>Ya, Kumpulkan Sekarang</span>
                 </button>
             </div>
+        </div>
+    </div>
+
+    <!-- TEACHER PIN AUTH MODAL -->
+    <div id="modal-pin-guru" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 space-y-4 shadow-2xl transform transition-all">
+            <div class="flex items-center space-x-3 text-amber-600">
+                <div class="w-10 h-10 rounded-full bg-amber-100 flex items-center justify-center">
+                    <i class="fa-solid fa-user-shield text-xl text-amber-700"></i>
+                </div>
+                <div>
+                    <h3 class="text-base font-bold text-slate-800">Akses Khusus Guru</h3>
+                    <p class="text-xs text-slate-500">Masukkan PIN untuk membuka dashboard</p>
+                </div>
+            </div>
+            
+            <form id="form-pin-guru" class="space-y-3">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">PIN Keamanan Guru</label>
+                    <input type="password" id="input-pin-guru" required placeholder="Masukkan PIN (Default: 1234)" class="w-full text-center tracking-widest text-lg font-bold py-2.5 px-3 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <p id="pin-error-msg" class="hidden text-xs text-rose-600 font-semibold mt-1.5 text-center"><i class="fa-solid fa-triangle-exclamation mr-1"></i>PIN Salah! Silakan coba lagi.</p>
+                </div>
+
+                <div class="p-2.5 bg-amber-50 border border-amber-200 rounded-xl text-[11px] text-amber-800 flex items-start gap-1.5">
+                    <i class="fa-solid fa-circle-info mt-0.5 text-amber-600"></i>
+                    <span>PIN default adalah <strong>1234</strong>. Siswa tidak diberikan PIN ini.</span>
+                </div>
+
+                <div class="flex items-center justify-end space-x-2 pt-2 border-t border-slate-100">
+                    <button type="button" id="btn-cancel-pin" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold rounded-xl transition-all">
+                        Batal
+                    </button>
+                    <button type="submit" class="px-4 py-2 bg-amber-600 hover:bg-amber-700 text-white text-xs font-bold rounded-xl shadow transition-all">
+                        Buka Dashboard
+                    </button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -1020,310 +1057,68 @@
         let studentProfile = {};
 
         const STORAGE_KEY = 'biologi_virus_exam_submission_v1';
+        const GURU_PIN = '1234'; // Default PIN Keamanan Guru
 
         // DOM ELEMENTS
         const screenWelcome = document.getElementById('screen-welcome');
-        const screenQuiz = document.getElementById('screen-quiz');
-        const screenResult = document.getElementById('screen-result');
-        const headerInfo = document.getElementById('header-quiz-info');
-        const timerDisplay = document.getElementById('timer-display');
-        const headerStudentName = document.getElementById('header-student-name');
+        // TEACHER DASHBOARD SECURITY LOGIC
+        const btnOpenGuru = document.getElementById('btn-open-teacher-dashboard');
+        const btnCloseGuru = document.getElementById('btn-close-teacher-dashboard');
+        const screenGuru = document.getElementById('screen-teacher-dashboard');
+        const modalPinGuru = document.getElementById('modal-pin-guru');
+        const formPinGuru = document.getElementById('form-pin-guru');
+        const inputPinGuru = document.getElementById('input-pin-guru');
+        const pinErrorMsg = document.getElementById('pin-error-msg');
+        const btnCancelPin = document.getElementById('btn-cancel-pin');
 
-        // ON INITIAL LOAD
-        window.addEventListener('DOMContentLoaded', () => {
-            checkExistingSubmission();
-        });
+        let pendingTeacherAction = null; // 'open_dashboard' or 'reset_exam'
 
-        function checkExistingSubmission() {
-            const savedData = localStorage.getItem(STORAGE_KEY);
-            if (savedData) {
-                try {
-                    const parsed = JSON.parse(savedData);
-                    studentProfile = parsed.studentProfile || {};
-                    userAnswers = parsed.userAnswers || {};
-                    showResultsScreen(parsed);
-                } catch (e) {
-                    console.error("Error parsing saved exam data", e);
-                }
-            }
-        }
+        btnOpenGuru.onclick = () => {
+            pendingTeacherAction = 'open_dashboard';
+            inputPinGuru.value = '';
+            pinErrorMsg.classList.add('hidden');
+            modalPinGuru.classList.remove('hidden');
+            inputPinGuru.focus();
+        };
 
-        // FORM SUBMIT -> START EXAM
-        document.getElementById('form-identity').addEventListener('submit', (e) => {
+        btnCancelPin.onclick = () => {
+            modalPinGuru.classList.add('hidden');
+            pendingTeacherAction = null;
+        };
+
+        formPinGuru.onsubmit = (e) => {
             e.preventDefault();
-            studentProfile = {
-                nama: document.getElementById('input-nama').value.trim(),
-                kelas: document.getElementById('input-kelas').value,
-                absen: document.getElementById('input-absen').value,
-                nisn: document.getElementById('input-nisn').value.trim(),
-                startTime: new Date().toISOString()
-            };
+            const enteredPin = inputPinGuru.value.trim();
 
-            // Switch Screen
-            screenWelcome.classList.add('hidden');
-            screenQuiz.classList.remove('hidden');
-            headerInfo.classList.remove('hidden');
-            headerStudentName.textContent = studentProfile.nama;
-
-            startTimer();
-            buildNavGrid();
-            renderQuestion(0);
-        });
-
-        // TIMER FUNCTION
-        function startTimer() {
-            updateTimerDisplay();
-            timerInterval = setInterval(() => {
-                timeRemaining--;
-                updateTimerDisplay();
-                if (timeRemaining <= 0) {
-                    clearInterval(timerInterval);
-                    alert('Waktu ujian telah habis! Jawaban Anda akan otomatis dikumpulkan.');
-                    processExamSubmission();
+            if (enteredPin === GURU_PIN) {
+                modalPinGuru.classList.add('hidden');
+                
+                if (pendingTeacherAction === 'open_dashboard') {
+                    screenWelcome.classList.add('hidden');
+                    screenQuiz.classList.add('hidden');
+                    screenResult.classList.add('hidden');
+                    screenGuru.classList.remove('hidden');
+                    renderTeacherDashboard();
+                } else if (pendingTeacherAction === 'reset_exam') {
+                    localStorage.removeItem(STORAGE_KEY);
+                    location.reload();
                 }
-            }, 1000);
-        }
-
-        function updateTimerDisplay() {
-            const minutes = Math.floor(timeRemaining / 60);
-            const seconds = timeRemaining % 60;
-            timerDisplay.textContent = `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-        }
-
-        // RENDER NAV GRID
-        function buildNavGrid() {
-            const grid = document.getElementById('nav-grid');
-            grid.innerHTML = '';
-
-            QUESTIONS_DATA.forEach((q, idx) => {
-                const btn = document.createElement('button');
-                btn.id = `nav-btn-${idx}`;
-                btn.type = 'button';
-                btn.className = getNavBtnClass(idx);
-                btn.textContent = idx + 1;
-                btn.onclick = () => jumpToQuestion(idx);
-                grid.appendChild(btn);
-            });
-
-            updateAnsweredCounter();
-        }
-
-        function getNavBtnClass(idx) {
-            const q = QUESTIONS_DATA[idx];
-            const ans = userAnswers[q.id];
-            const isRagu = raguAnswers[q.id];
-            const isCurrent = idx === currentQuestionIndex;
-
-            let base = "w-full aspect-square rounded-lg font-bold text-xs flex items-center justify-center transition-all border ";
-
-            if (isCurrent) {
-                base += "ring-2 ring-sky-500 ring-offset-1 ";
-            }
-
-            if (isRagu) {
-                return base + "bg-amber-400 text-amber-950 border-amber-500 shadow-sm";
-            } else if (ans !== undefined && ans !== null && (Array.isArray(ans) ? ans.length > 0 : true)) {
-                return base + "bg-sky-600 text-white border-sky-700 shadow-sm";
+                pendingTeacherAction = null;
             } else {
-                return base + "bg-slate-100 hover:bg-slate-200 text-slate-700 border-slate-200";
+                pinErrorMsg.classList.remove('hidden');
             }
-        }
-
-        function updateAnsweredCounter() {
-            let count = 0;
-            QUESTIONS_DATA.forEach(q => {
-                const ans = userAnswers[q.id];
-                if (ans !== undefined && ans !== null && (Array.isArray(ans) ? ans.length > 0 : true)) {
-                    count++;
-                }
-            });
-            document.getElementById('answered-counter').textContent = `${count} / ${QUESTIONS_DATA.length} Terjawab`;
-        }
-
-        // RENDER QUESTION BY INDEX
-        function renderQuestion(idx) {
-            currentQuestionIndex = idx;
-            const q = QUESTIONS_DATA[idx];
-
-            // Header Badges
-            document.getElementById('badge-question-number').textContent = `Soal #${idx + 1}`;
-            
-            const typeLabel = q.type === 'PG' ? 'Pilihan Ganda' : (q.type === 'BS' ? 'Benar / Salah' : 'Pilihan Ganda Kompleks');
-            document.getElementById('badge-question-type').textContent = typeLabel;
-            document.getElementById('badge-question-score').textContent = `Bobot: ${q.score} Poin`;
-
-            // Question Text
-            document.getElementById('question-text').innerHTML = q.question;
-
-            // Ragu-ragu Checkbox
-            const checkRagu = document.getElementById('check-ragu');
-            checkRagu.checked = !!raguAnswers[q.id];
-            checkRagu.onchange = (e) => {
-                raguAnswers[q.id] = e.target.checked;
-                refreshNavBtn(idx);
-            };
-
-            // Render Options
-            const container = document.getElementById('options-container');
-            container.innerHTML = '';
-
-            if (q.type === 'PG') {
-                q.options.forEach((optText, optIdx) => {
-                    const optKey = optText.charAt(0); // 'A', 'B', 'C', 'D', 'E'
-                    const isSelected = userAnswers[q.id] === optKey;
-
-                    const label = document.createElement('label');
-                    label.className = `flex items-center p-3.5 rounded-xl border transition-all cursor-pointer ${
-                        isSelected 
-                        ? 'bg-sky-50 border-sky-500 text-sky-950 font-medium shadow-sm' 
-                        : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
-                    }`;
-
-                    label.innerHTML = `
-                        <input type="radio" name="q_opt_${q.id}" value="${optKey}" ${isSelected ? 'checked' : ''} class="w-4 h-4 text-sky-600 focus:ring-sky-500 border-slate-300">
-                        <span class="ml-3 text-sm">${optText}</span>
-                    `;
-
-                    label.querySelector('input').addEventListener('change', () => {
-                        userAnswers[q.id] = optKey;
-                        renderQuestion(idx);
-                        refreshNavBtn(idx);
-                    });
-
-                    container.appendChild(label);
-                });
-            } else if (q.type === 'BS') {
-                q.options.forEach((optText) => {
-                    const isSelected = userAnswers[q.id] === optText;
-
-                    const label = document.createElement('label');
-                    label.className = `flex items-center p-3.5 rounded-xl border transition-all cursor-pointer ${
-                        isSelected 
-                        ? 'bg-indigo-50 border-indigo-500 text-indigo-950 font-semibold shadow-sm' 
-                        : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
-                    }`;
-
-                    label.innerHTML = `
-                        <input type="radio" name="q_opt_${q.id}" value="${optText}" ${isSelected ? 'checked' : ''} class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 border-slate-300">
-                        <span class="ml-3 text-sm font-semibold">${optText}</span>
-                    `;
-
-                    label.querySelector('input').addEventListener('change', () => {
-                        userAnswers[q.id] = optText;
-                        renderQuestion(idx);
-                        refreshNavBtn(idx);
-                    });
-
-                    container.appendChild(label);
-                });
-            } else if (q.type === 'PGK') {
-                const currentAnsList = userAnswers[q.id] || [];
-
-                q.options.forEach((optText) => {
-                    const optKey = optText.charAt(0); // 'A', 'B', 'C', 'D'
-                    const isChecked = currentAnsList.includes(optKey);
-
-                    const label = document.createElement('label');
-                    label.className = `flex items-start p-3.5 rounded-xl border transition-all cursor-pointer ${
-                        isChecked 
-                        ? 'bg-purple-50 border-purple-500 text-purple-950 font-medium shadow-sm' 
-                        : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
-                    }`;
-
-                    label.innerHTML = `
-                        <input type="checkbox" value="${optKey}" ${isChecked ? 'checked' : ''} class="mt-0.5 w-4 h-4 text-purple-600 rounded focus:ring-purple-500 border-slate-300">
-                        <span class="ml-3 text-sm">${optText}</span>
-                    `;
-
-                    label.querySelector('input').addEventListener('change', (e) => {
-                        let list = userAnswers[q.id] || [];
-                        if (e.target.checked) {
-                            if (!list.includes(optKey)) list.push(optKey);
-                        } else {
-                            list = list.filter(item => item !== optKey);
-                        }
-                        userAnswers[q.id] = list.sort();
-                        renderQuestion(idx);
-                        refreshNavBtn(idx);
-                    });
-
-                    container.appendChild(label);
-                });
-            }
-
-            // Update prev/next buttons
-            const btnPrev = document.getElementById('btn-prev');
-            const btnNext = document.getElementById('btn-next');
-            const btnSubmit = document.getElementById('btn-submit-exam');
-
-            btnPrev.disabled = idx === 0;
-
-            if (idx === QUESTIONS_DATA.length - 1) {
-                btnNext.classList.add('hidden');
-                btnSubmit.classList.remove('hidden');
-            } else {
-                btnNext.classList.remove('hidden');
-                btnSubmit.classList.add('hidden');
-            }
-
-            refreshNavBtn(idx);
-        }
-
-        function refreshNavBtn(idx) {
-            const btn = document.getElementById(`nav-btn-${idx}`);
-            if (btn) {
-                btn.className = getNavBtnClass(idx);
-            }
-            updateAnsweredCounter();
-        }
-
-        function jumpToQuestion(idx) {
-            renderQuestion(idx);
-        }
-
-        document.getElementById('btn-prev').onclick = () => {
-            if (currentQuestionIndex > 0) renderQuestion(currentQuestionIndex - 1);
         };
 
-        document.getElementById('btn-next').onclick = () => {
-            if (currentQuestionIndex < QUESTIONS_DATA.length - 1) renderQuestion(currentQuestionIndex + 1);
-        };
-
-        // SUBMISSION LOGIC
-        const modalConfirm = document.getElementById('modal-confirm');
-        const btnSubmitExam = document.getElementById('btn-submit-exam');
-        const btnFinishSidebar = document.getElementById('btn-finish-sidebar');
-        const btnModalCancel = document.getElementById('btn-modal-cancel');
-        const btnModalConfirm = document.getElementById('btn-modal-confirm');
-
-        function openConfirmModal() {
-            let unanswered = 0;
-            QUESTIONS_DATA.forEach(q => {
-                const ans = userAnswers[q.id];
-                if (ans === undefined || ans === null || (Array.isArray(ans) && ans.length === 0)) {
-                    unanswered++;
-                }
-            });
-
-            const text = document.getElementById('confirm-modal-text');
-            if (unanswered > 0) {
-                text.innerHTML = `Masih ada <strong class="text-amber-600 font-bold">${unanswered} soal</strong> yang belum Anda jawab. Apakah Anda yakin ingin mengumpulkan ujian sekarang?`;
+        btnCloseGuru.onclick = () => {
+            screenGuru.classList.add('hidden');
+            if (localStorage.getItem(STORAGE_KEY)) {
+                screenResult.classList.remove('hidden');
             } else {
-                text.innerHTML = `Semua <strong>35 soal</strong> telah Anda jawab! Apakah Anda yakin ingin mengumpulkan ulangan harian ini sekarang?`;
+                screenWelcome.classList.remove('hidden');
             }
-
-            modalConfirm.classList.remove('hidden');
-        }
-
-        btnSubmitExam.onclick = openConfirmModal;
-        btnFinishSidebar.onclick = openConfirmModal;
-        btnModalCancel.onclick = () => modalConfirm.classList.add('hidden');
-
-        btnModalConfirm.onclick = () => {
-            modalConfirm.classList.add('hidden');
-            processExamSubmission();
         };
 
+        function renderTeacherDashboard() {
         // PROCESS SCORE & SAVE TO LOCALSTORAGE
         function processExamSubmission() {
             if (timerInterval) clearInterval(timerInterval);
@@ -1373,12 +1168,22 @@
             showResultsScreen(examRecord);
         }
 
-        let allRemoteSubmissions = [];
-
         function saveSubmissionToCloud(record) {
             // Save to local cached list for immediate teacher preview
             let localList = JSON.parse(localStorage.getItem('guru_rekap_list_v1') || '[]');
-            localList.push(record);
+            
+            // Check if student with same NISN/Name already in list, update or append
+            const existingIdx = localList.findIndex(item => 
+                (item.studentProfile?.nisn && item.studentProfile?.nisn === record.studentProfile?.nisn) ||
+                (item.studentProfile?.nama === record.studentProfile?.nama && item.studentProfile?.kelas === record.studentProfile?.kelas)
+            );
+
+            if (existingIdx >= 0) {
+                localList[existingIdx] = record;
+            } else {
+                localList.push(record);
+            }
+
             localStorage.setItem('guru_rekap_list_v1', JSON.stringify(localList));
 
             // Optional Firebase Sync if available
@@ -1392,57 +1197,6 @@
                 console.log('Running in local mode:', e);
             }
         }
-
-        // TEACHER DASHBOARD LOGIC
-        const btnOpenGuru = document.getElementById('btn-open-teacher-dashboard');
-        const btnCloseGuru = document.getElementById('btn-close-teacher-dashboard');
-        const screenGuru = document.getElementById('screen-teacher-dashboard');
-
-        btnOpenGuru.onclick = () => {
-            screenWelcome.classList.add('hidden');
-            screenQuiz.classList.add('hidden');
-            screenResult.classList.add('hidden');
-            screenGuru.classList.remove('hidden');
-            renderTeacherDashboard();
-        };
-
-        btnCloseGuru.onclick = () => {
-            screenGuru.classList.add('hidden');
-            if (localStorage.getItem(STORAGE_KEY)) {
-                screenResult.classList.remove('hidden');
-            } else {
-                screenWelcome.classList.remove('hidden');
-            }
-        };
-
-        function renderTeacherDashboard() {
-            let list = JSON.parse(localStorage.getItem('guru_rekap_list_v1') || '[]');
-            const searchVal = document.getElementById('filter-search').value.toLowerCase();
-            const classVal = document.getElementById('filter-class-guru').value;
-
-            // Filter
-            let filtered = list.filter(item => {
-                const p = item.studentProfile || {};
-                const matchName = (p.nama || '').toLowerCase().includes(searchVal) || (p.nisn || '').includes(searchVal);
-                const matchClass = classVal === '' || p.kelas === classVal;
-                return matchName && matchClass;
-            });
-
-            // Update Stats
-            document.getElementById('stat-total-students').textContent = `${filtered.length} Siswa`;
-            
-            if (filtered.length > 0) {
-                const sum = filtered.reduce((acc, curr) => acc + (curr.scores?.total || 0), 0);
-                const avg = (sum / filtered.length).toFixed(1);
-                document.getElementById('stat-avg-score').textContent = avg;
-
-                const passCount = filtered.filter(i => (i.scores?.total || 0) >= 75).length;
-                const passRate = Math.round((passCount / filtered.length) * 100);
-                document.getElementById('stat-pass-rate').textContent = `${passRate}% (${passCount} Tuntas)`;
-            } else {
-                document.getElementById('stat-avg-score').textContent = '0.0';
-                document.getElementById('stat-pass-rate').textContent = '0%';
-            }
 
             // Render Table
             const tbody = document.getElementById('table-guru-body');
@@ -1675,6 +1429,17 @@
                 localStorage.removeItem(STORAGE_KEY);
                 location.reload();
             }
+        };
+    </script>
+</body>
+</html>
+        // RESET DEMO FOR TEACHER / SIMULATION (PROTECTED BY PIN)
+        document.getElementById('btn-reset-demo').onclick = () => {
+            pendingTeacherAction = 'reset_exam';
+            inputPinGuru.value = '';
+            pinErrorMsg.classList.add('hidden');
+            modalPinGuru.classList.remove('hidden');
+            inputPinGuru.focus();
         };
     </script>
 </body>
