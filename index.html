@@ -516,13 +516,13 @@
             <form id="form-pin-guru" class="space-y-3">
                 <div>
                     <label class="block text-xs font-semibold text-slate-700 mb-1">PIN Keamanan Guru</label>
-                    <input type="password" id="input-pin-guru" required placeholder="Masukkan PIN (Default: 1234)" class="w-full text-center tracking-widest text-lg font-bold py-2.5 px-3 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <input type="password" id="input-pin-guru" required placeholder="Masukkan PIN Guru" class="w-full text-center tracking-widest text-lg font-bold py-2.5 px-3 bg-slate-50 border border-slate-300 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-amber-500">
                     <p id="pin-error-msg" class="hidden text-xs text-rose-600 font-semibold mt-1.5 text-center"><i class="fa-solid fa-triangle-exclamation mr-1"></i>PIN Salah! Silakan coba lagi.</p>
                 </div>
 
                 <div class="p-2.5 bg-amber-50 border border-amber-200 rounded-xl text-[11px] text-amber-800 flex items-start gap-1.5">
                     <i class="fa-solid fa-circle-info mt-0.5 text-amber-600"></i>
-                    <span>PIN default adalah <strong>1234</strong>. Siswa tidak diberikan PIN ini.</span>
+                    <span>Area terbatas. Hanya Guru atau Pengawas Ujian yang dapat mengakses halaman ini.</span>
                 </div>
 
                 <div class="flex items-center justify-end space-x-2 pt-2 border-t border-slate-100">
@@ -540,539 +540,506 @@
     <script>
         // COMPLETE QUESTION BANK (35 QUESTIONS)
         const QUESTIONS_DATA = [
-            // ==========================================
             // BAGIAN A: PILIHAN GANDA (1 - 20) @ 3 POIN
-            // ==========================================
-            {
-                id: 1,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Virus tidak dikategorikan sebagai sel (aseluler) karena tidak memiliki bagian-bagian sel sejati. Alasan utama virus tergolong agen aseluler adalah...',
-                options: [
-                    'A. Tidak memiliki asam nukleat DNA maupun RNA',
-                    'B. Tidak memiliki membran sel, sitoplasma, dan organel sel',
-                    'C. Memiliki ukuran yang lebih besar dari sel bakteri',
-                    'D. Dapat bereplikasi secara mandiri di luar sel inang',
-                    'E. Tidak memiliki kapsid protein pembungkus'
-                ],
-                correct: 'B',
-                explanation: 'Virus bersifat aseluler (bukan sel) karena tidak memiliki komponen seluler dasar seperti membran plasma, sitoplasma, dan organel sel (seperti ribosom, mitokondria, dll).'
-            },
-            {
-                id: 2,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Perhatikan sifat-sifat virus berikut:<br>(1) Dapat dikristalkan<br>(2) Memiliki asam nukleat (DNA/RNA)<br>(3) Tidak melakukan metabolisme sendiri<br>(4) Dapat bereplikasi hanya di dalam sel hidup<br>Sifat virus yang mendukung argumen bahwa virus dianggap sebagai benda mati ditunjukkan oleh nomor...',
-                options: [
-                    'A. (1) dan (2)',
-                    'B. (1) dan (3)',
-                    'C. (2) dan (3)',
-                    'D. (2) dan (4)',
-                    'E. (3) dan (4)'
-                ],
-                correct: 'B',
-                explanation: 'Ciri virus sebagai benda mati adalah dapat dikristalkan (seperti benda mati/mineral) dan tidak melakukan proses metabolisme mandiri karena tidak memiliki perangkat seluler.'
-            },
-            {
-                id: 3,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Bagian struktur tubuh Bakteriofag T4 yang berfungsi untuk menempelkan tubuh virus pada reseptor spesifik permukaan sel bakteri (tahap adsorpsi) adalah...',
-                options: [
-                    'A. Kapsid',
-                    'B. Leher',
-                    'C. Selubung Ekor',
-                    'D. Serabut Ekor',
-                    'E. Asam Nukleat'
-                ],
-                correct: 'D',
-                explanation: 'Serabut ekor (tail fibers) berfungsi untuk mengenali dan menempel pada reseptor spesifik di membran atau dinding sel bakteri pada tahap adsorpsi.'
-            },
-            {
-                id: 4,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Perbedaan mendasar antara Siklus Litik dan Siklus Lisogenik pada reproduksi virus adalah...',
-                options: [
-                    'A. Pada siklus litik sel inang hancur/lisis, sedangkan pada siklus lisogenik sel inang tetap hidup dan terbentuk profag',
-                    'B. Siklus litik membutuhkan waktu lebih lama dibanding siklus lisogenik',
-                    'C. Siklus lisogenik selalu diakhiri dengan kematian sel inang secara langsung',
-                    'D. Siklus litik tidak melalui tahap adsorpsi dan penetrasi',
-                    'E. DNA virus pada siklus litik akan menyatu dengan DNA sel inang'
-                ],
-                correct: 'A',
-                explanation: 'Pada siklus litik, virus mengambil alih mesin sel inang dan mengakhiri daur dengan lisis (kematian sel). Pada siklus lisogenik, materi genetik virus menyatu dengan DNA inang menjadi profag dan sel inang tetap hidup serta membelah.'
-            },
-            {
-                id: 5,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Urutan tahapan daur reproduksi virus secara litik yang benar adalah...',
-                options: [
-                    'A. Penetrasi → Adsorpsi → Perakitan → Sintesis → Lisis',
-                    'B. Adsorpsi → Penetrasi → Sintesis/Eklipase → Perakitan → Lisis',
-                    'C. Adsorpsi → Sintesis → Penetrasi → Perakitan → Lisis',
-                    'D. Penetrasi → Sintesis → Adsorpsi → Lisis → Perakitan',
-                    'E. Adsorpsi → Penetrasi → Perakitan → Sintesis → Lisis'
-                ],
-                correct: 'B',
-                explanation: 'Tahapan daur litik yang runtut: 1) Adsorpsi (penempelan), 2) Penetrasi (penginjeksian asam nukleat), 3) Sintesis/Eklipase (replikasi dan pembuatan komponen), 4) Perakitan (perakitan tubuh virus baru), 5) Lisis (pemecahan sel inang).'
-            },
-            {
-                id: 6,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Tokoh ilmuwan yang pertama kali berhasil mengkristalkan Tobacco Mosaic Virus (TMV) dan mengonfirmasi bahwa virus merupakan agen non-seluler adalah...',
-                options: [
-                    'A. Adolf Mayer',
-                    'B. Dmitri Ivanovsky',
-                    'C. Martinus Beijerinck',
-                    'D. Wendell Stanley',
-                    'E. Robert Hooke'
-                ],
-                correct: 'D',
-                explanation: 'Wendell Stanley pada tahun 1935 berhasil mengkristalkan Tobacco Mosaic Virus (TMV) dan membuktikan bahwa virus dapat dikristalkan seperti zat kimia namun tetap mampu menginfeksi.'
-            },
-            {
-                id: 7,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Ukuran rata-rata virus sangat ultramikroskopis, yaitu berkisar antara...',
-                options: [
-                    'A. 1 - 10 Centimeter (cm)',
-                    'B. 50 - 100 Mikrometer (µm)',
-                    'C. 20 - 400 Nanometer (nm)',
-                    'D. 2 - 10 Mikrometer (µm)',
-                    'E. 1 - 5 Milimeter (mm)'
-                ],
-                correct: 'C',
-                explanation: 'Ukuran virus berkisar antara 20–400 Nanometer (nm). Sebagai perbandingan, sel bakteri berukuran 2–10 µm dan rambut manusia berukuran 50–100 µm.'
-            },
-            {
-                id: 8,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Virus tidak selalu merugikan. Salah satu pemanfaatan virus yang menguntungkan dalam bidang medis dan rekayasa genetika adalah...',
-                options: [
-                    'A. Penggunaan Tobacco Mosaic Virus sebagai pupuk organik tanaman',
-                    'B. Penggunaan Adenovirus sebagai vektor pembawa gen dalam pembuatan vaksin',
-                    'C. Penggunaan virus Dengue untuk meningkatkan daya tahan tubuh manusia',
-                    'D. Penggunaan New Castle Disease Virus untuk menyuburkan hewan ternak',
-                    'E. Penggunaan virus influenza untuk membunuh sel kanker'
-                ],
-                correct: 'B',
-                explanation: 'Adenovirus dimanfaatkan sebagai vektor rekayasa genetik untuk membawa materi genetik target ke dalam sel tubuh dalam terapi gen dan pengembangan vaksin rekombinan.'
-            },
-            {
-                id: 9,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Pasangan antara jenis virus, sasaran infeksi, dan penyakit/dampak yang ditimbulkan berikut yang paling tepat adalah...',
-                options: [
-                    'A. HIV — Menyerang sel darah merah — Demam Berdarah',
-                    'B. TMV — Menyerang daun tembakau — Bercak kekuningan pada daun',
-                    'C. NDV — Menyerang saraf manusia — Rabies',
-                    'D. Virus Dengue — Menyerang sel limfosit T — AIDS',
-                    'E. Tungro — Menyerang unggas — Kematian mendadak'
-                ],
-                correct: 'B',
-                explanation: 'Tobacco Mosaic Virus (TMV) menginfeksi jaringan fotosintesis daun tanaman tembakau dan famili Solanaceae yang menyebabkan timbulnya bercak kekuningan/mosaik.'
-            },
-            {
-                id: 10,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Peternak ayam resah karena unggas peliharaannya mengalami gejala kejang-kejang, kepala terbalik (leher berputar), diare hijau, dan kelumpuhan. Penyakit ini dikenal sebagai Tetelo yang disebabkan oleh infeksi...',
-                options: [
-                    'A. Rhabdovirus',
-                    'B. Foot and Mouth Disease Virus (FMDV)',
-                    'C. New Castle Disease Virus (NDV)',
-                    'D. Rous Sarcoma Virus (RSV)',
-                    'E. Citrus Vein Phloem Degeneration (CVPD)'
-                ],
-                correct: 'C',
-                explanation: 'Penyakit Tetelo (Newcastle Disease) pada unggas disebabkan oleh New Castle Disease Virus (NDV) yang merusak saluran pernapasan, pencernaan, dan sistem saraf unggas.'
-            },
-            {
-                id: 11,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Bakteriofag dapat dimanfaatkan dalam dunia kedokteran sebagai alternatif pengobatan infeksi bakteri yang sudah resisten terhadap antibiotik. Terapi ini dikenal dengan istilah...',
-                options: [
-                    'A. Terapi Gen',
-                    'B. Terapi Fag (Phage Therapy)',
-                    'C. Kemoterapi',
-                    'D. Vaksinasi RNA',
-                    'E. Bioremediasi'
-                ],
-                correct: 'B',
-                explanation: 'Terapi Fag (Phage Therapy) menggunakan jenis virus bakteriofag spesifik untuk menginfeksi dan melisiskan bakteri patogen di dalam tubuh tanpa merusak sel-sel tubuh manusia.'
-            },
-            {
-                id: 12,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Virus HIV sangat berbahaya bagi tubuh manusia karena menyerang sistem kekebalan tubuh secara spesifik dengan menginfeksi...',
-                options: [
-                    'A. Eritrosit (Sel Darah Merah)',
-                    'B. Trombosit (Keping Darah)',
-                    'C. Sel Limfosit T (CD4+)',
-                    'D. Sel Saraf Pusat',
-                    'E. Sel epitel paru-paru'
-                ],
-                correct: 'C',
-                explanation: 'HIV menginfeksi dan melumpuhkan sel limfosit T (khususnya sel T-helper/CD4+), yang merupakan inti pengatur imunitas tubuh, sehingga penderita rentan terkena infeksi sekunder (AIDS).'
-            },
-            {
-                id: 13,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Seorang pasien mengalami gejala demam, ruam merah, lepuhan berair gatal di kulit, dan nyeri. Berdasarkan kartu kasus virologi, pasien terinfeksi oleh...',
-                options: [
-                    'A. Varicella-zoster Virus',
-                    'B. Mumps Virus',
-                    'C. Measles Virus',
-                    'D. Hepatitis B Virus',
-                    'E. Dengue Virus'
-                ],
-                correct: 'A',
-                explanation: 'Varicella-zoster Virus menginfeksi kulit dan sel saraf yang menyebabkan timbulnya penyakit Cacar Air (Varisela) dengan ruam dan lepuhan gatal berisi cairan.'
-            },
-            {
-                id: 14,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Penyakit Gondongan (Parotitis) yang ditandai dengan pembengkakan pada daerah pipi/rahang dan rasa nyeri saat mengunyah disebabkan oleh Mumps Virus yang menyerang...',
-                options: [
-                    'A. Hati (Liver)',
-                    'B. Kelenjar ludah (Parotis)',
-                    'C. Sistem saraf pusat',
-                    'D. Sel darah merah',
-                    'E. Saluran pernapasan bawah'
-                ],
-                correct: 'B',
-                explanation: 'Mumps Virus menginfeksi dan menyebabkan peradangan pada kelenjar air liur/ludah (parotis) sehingga pipi dan bawah rahang membengkak.'
-            },
-            {
-                id: 15,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Saat terjadi lonjakan kasus Demam Berdarah Dengue (DBD), warga meminta tindakan fogging (pengasapan). Namun pakar kesehatan menyatakan fogging saja tidak cukup karena...',
-                options: [
-                    'A. Fogging membunuh jentik nyamuk tetapi tidak membunuh nyamuk dewasa',
-                    'B. Fogging hanya membunuh nyamuk dewasa dan tidak membasmi jentik nyamuk serta tidak mematikan virusnya langsung',
-                    'C. Fogging membuat virus Dengue bermutasi menjadi lebih ganas',
-                    'D. Fogging hanya dapat dilakukan pada malam hari',
-                    'E. Fogging membunuh semua jenis bakteri di udara'
-                ],
-                correct: 'B',
-                explanation: 'Fogging hanya membasmi nyamuk Aedes aegypti dewasa. Jentik-jentik di tempat genangan air tetap hidup dan akan menetas, sehingga program PSN 3M Plus tetap paling utama.'
-            },
-            {
-                id: 16,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Mekanisme kerja utama dari vaksinasi dalam mencegah infeksi virus di dalam tubuh adalah...',
-                options: [
-                    'A. Membunuh secara langsung seluruh virus yang telah masuk ke dalam jaringan tubuh',
-                    'B. Merangsang sistem kekebalan tubuh untuk membentuk antibodi spesifik dan sel memori tanpa menimbulkan penyakit berat',
-                    'C. Menyerap racun yang dihasilkan oleh virus di dalam aliran darah',
-                    'D. Mengubah struktur sel tubuh agar tidak dapat disentuh oleh virus',
-                    'E. Menghancurkan dinding sel inang sehingga virus tidak memiliki tempat hidup'
-                ],
-                correct: 'B',
-                explanation: 'Vaksin mengandung antigen virus yang telah dilemahkan/inaktif yang memicu sel limfosit membentuk antibodi spesifik dan sel memori untuk perlindungan jangka panjang.'
-            },
-            {
-                id: 17,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Seorang pasien berobat ke dokter karena mengalami gejala batuk pilek akibat infeksi virus Influenza dan meminta obat antibiotik. Tindakan dokter yang paling tepat adalah...',
-                options: [
-                    'A. Memberikan antibiotik dosis tinggi agar virus cepat mati',
-                    'B. Menolak memberikan antibiotik karena antibiotik hanya efektif membunuh bakteri, bukan virus',
-                    'C. Memberikan antibiotik untuk merangsang pembentukan antibodi tubuh',
-                    'D. Memberikan antibiotik agar virus tidak melakukan pembelahan biner',
-                    'E. Menolak memberikan antibiotik karena antibiotik hanya diperuntukkan bagi penyakit jamur'
-                ],
-                correct: 'B',
-                explanation: 'Antibiotik dirancang khusus menghambat struktur/metabolisme sel bakteri (misal dinding sel). Karena virus tidak punya dinding sel/metabolisme mandiri, antibiotik sama sekali tidak mempan terhadap virus.'
-            },
-            {
-                id: 18,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Langkah pengendalian vektor nyamuk Aedes aegypti yang paling efektif dan ramah lingkungan melalui program PSN 3M Plus adalah...',
-                options: [
-                    'A. Menguras tempat penampungan air, menutup rapat wadah air, dan mendaur ulang barang bekas yang menampung air',
-                    'B. Membakar seluruh sampah plastik dan menggunakan obat nyamuk semprot setiap jam',
-                    'C. Mengeringkan seluruh sungai dan danau di sekitar pemukiman warga',
-                    'D. Meminum obat antivirus secara rutin setiap minggu pada musim hujan',
-                    'E. Menutup seluruh jendela rumah sepanjang hari agar nyamuk tidak masuk'
-                ],
-                correct: 'A',
-                explanation: 'Gerakan 3M Plus (Menguras, Menutup, Mendaur ulang) terbukti memutus rantai reproduksi nyamuk Aedes aegypti pada fase larva/jentik.'
-            },
-            {
-                id: 19,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Penerapan Protokol Kesehatan (seperti memakai masker dan mencuci tangan dengan sabun) sangat efektif menurunkan penularan Virus Corona dan Influenza karena...',
-                options: [
-                    'A. Sabun dapat menghancurkan lapisan membran/kapsid lipid virus dan masker menahan droplet penularan',
-                    'B. Sabun memberikan zat gizi yang menguatkan sel epitel kulit dari serangan virus',
-                    'C. Masker mampu membunuh virus dengan suhu panas pernapasan',
-                    'D. Menjaga jarak mematikan daya replikasi virus di udara terbuka',
-                    'E. Sabun merangsang pembentukan eritrosit secara cepat'
-                ],
-                correct: 'A',
-                explanation: 'Virus berdinding lipid (enveloped virus) seperti SARS-CoV-2 dan Influenza selubung lemaknya terlarut oleh molekul surfaktan sabun, sementara masker menyaring percikan droplet saat bernapas/batuk.'
-            },
-            {
-                id: 20,
-                type: 'PG',
-                section: 'A',
-                score: 3,
-                question: 'Penyakit Mulut dan Kuku (PMK) pada hewan ternak seperti sapi dan kambing disebabkan oleh Foot and Mouth Disease Virus (FMDV). Organ utama yang diserang oleh virus ini adalah...',
-                options: [
-                    'A. Otak dan sumsum tulang belakang',
-                    'B. Mulut, lidah, kuku, dan kaki hewan ternak',
-                    'C. Paru-paru dan ginjal',
-                    'D. Sel darah putih dan hati',
-                    'E. Jantung dan sistem saraf pencernaan'
-                ],
-                correct: 'B',
-                explanation: 'FMDV menginfeksi hewan berkuku belah dan menimbulkan luka melepuh hebat pada jaringan mukosa mulut, lidah, serta sela-sela kuku kaki.'
-            },
+            { id: 1, type: 'PG', section: 'A', score: 3, question: 'Virus tidak dikategorikan sebagai sel (aseluler) karena tidak memiliki bagian-bagian sel sejati. Alasan utama virus tergolong agen aseluler adalah...', options: ['A. Tidak memiliki asam nukleat DNA maupun RNA', 'B. Tidak memiliki membran sel, sitoplasma, dan organel sel', 'C. Memiliki ukuran yang lebih besar dari sel bakteri', 'D. Dapat bereplikasi secara mandiri di luar sel inang', 'E. Tidak memiliki kapsid protein pembungkus'], correct: 'B', explanation: 'Virus bersifat aseluler (bukan sel) karena tidak memiliki komponen seluler dasar seperti membran plasma, sitoplasma, dan organel sel.' },
+            { id: 2, type: 'PG', section: 'A', score: 3, question: 'Perhatikan sifat-sifat virus berikut:<br>(1) Dapat dikristalkan<br>(2) Memiliki asam nukleat (DNA/RNA)<br>(3) Tidak melakukan metabolisme sendiri<br>(4) Dapat bereplikasi hanya di dalam sel hidup<br>Sifat virus yang mendukung argumen bahwa virus dianggap sebagai benda mati ditunjukkan oleh nomor...', options: ['A. (1) dan (2)', 'B. (1) dan (3)', 'C. (2) dan (3)', 'D. (2) dan (4)', 'E. (3) dan (4)'], correct: 'B', explanation: 'Ciri virus sebagai benda mati adalah dapat dikristalkan dan tidak melakukan proses metabolisme mandiri.' },
+            { id: 3, type: 'PG', section: 'A', score: 3, question: 'Bagian struktur tubuh Bakteriofag T4 yang berfungsi untuk menempelkan tubuh virus pada reseptor spesifik permukaan sel bakteri (tahap adsorpsi) adalah...', options: ['A. Kapsid', 'B. Leher', 'C. Selubung Ekor', 'D. Serabut Ekor', 'E. Asam Nukleat'], correct: 'D', explanation: 'Serabut ekor berfungsi mengenali dan menempel pada reseptor spesifik di permukaan sel bakteri.' },
+            { id: 4, type: 'PG', section: 'A', score: 3, question: 'Perbedaan mendasar antara Siklus Litik dan Siklus Lisogenik pada reproduksi virus adalah...', options: ['A. Pada siklus litik sel inang hancur/lisis, sedangkan pada siklus lisogenik sel inang tetap hidup dan terbentuk profag', 'B. Siklus litik membutuhkan waktu lebih lama dibanding siklus lisogenik', 'C. Siklus lisogenik selalu diakhiri dengan kematian sel inang secara langsung', 'D. Siklus litik tidak melalui tahap adsorpsi dan penetrasi', 'E. DNA virus pada siklus litik akan menyatu dengan DNA sel inang'], correct: 'A', explanation: 'Pada siklus litik sel inang mati/lisis. Pada siklus lisogenik DNA virus menyatu dengan DNA inang menjadi profag dan sel inang tetap hidup.' },
+            { id: 5, type: 'PG', section: 'A', score: 3, question: 'Urutan tahapan daur reproduksi virus secara litik yang benar adalah...', options: ['A. Penetrasi → Adsorpsi → Perakitan → Sintesis → Lisis', 'B. Adsorpsi → Penetrasi → Sintesis/Eklipase → Perakitan → Lisis', 'C. Adsorpsi → Sintesis → Penetrasi → Perakitan → Lisis', 'D. Penetrasi → Sintesis → Adsorpsi → Lisis → Perakitan', 'E. Adsorpsi → Penetrasi → Perakitan → Sintesis → Lisis'], correct: 'B', explanation: 'Urutan daur litik: Adsorpsi → Penetrasi → Sintesis → Perakitan → Lisis.' },
+            { id: 6, type: 'PG', section: 'A', score: 3, question: 'Tokoh ilmuwan yang pertama kali berhasil mengkristalkan Tobacco Mosaic Virus (TMV) adalah...', options: ['A. Adolf Mayer', 'B. Dmitri Ivanovsky', 'C. Martinus Beijerinck', 'D. Wendell Stanley', 'E. Robert Hooke'], correct: 'D', explanation: 'Wendell Stanley pada tahun 1935 berhasil mengkristalkan Tobacco Mosaic Virus (TMV).' },
+            { id: 7, type: 'PG', section: 'A', score: 3, question: 'Ukuran rata-rata virus sangat ultramikroskopis, yaitu berkisar antara...', options: ['A. 1 - 10 Centimeter (cm)', 'B. 50 - 100 Mikrometer (µm)', 'C. 20 - 400 Nanometer (nm)', 'D. 2 - 10 Mikrometer (µm)', 'E. 1 - 5 Milimeter (mm)'], correct: 'C', explanation: 'Ukuran virus berkisar antara 20–400 Nanometer (nm).' },
+            { id: 8, type: 'PG', section: 'A', score: 3, question: 'Pemanfaatan virus yang menguntungkan dalam bidang medis dan rekayasa genetika adalah...', options: ['A. TMV sebagai pupuk organik', 'B. Adenovirus sebagai vektor pembawa gen dalam pembuatan vaksin', 'C. Virus Dengue untuk daya tahan tubuh', 'D. NDV untuk menyuburkan hewan', 'E. Virus Influenza membunuh kanker'], correct: 'B', explanation: 'Adenovirus dimanfaatkan sebagai vektor rekayasa genetik dalam terapi gen dan vaksin.' },
+            { id: 9, type: 'PG', section: 'A', score: 3, question: 'Pasangan antara jenis virus, sasaran infeksi, dan penyakit yang tepat adalah...', options: ['A. HIV — Sel darah merah — Demam Berdarah', 'B. TMV — Daun tembakau — Bercak kekuningan pada daun', 'C. NDV — Saraf manusia — Rabies', 'D. Virus Dengue — Limfosit T — AIDS', 'E. Tungro — Unggas — Kematian mendadak'], correct: 'B', explanation: 'TMV menginfeksi daun tembakau dan menimbulkan bercak bercorak mosaik.' },
+            { id: 10, type: 'PG', section: 'A', score: 3, question: 'Penyakit Tetelo pada ayam yang ditandai kepala terbalik dan kelumpuhan disebabkan oleh...', options: ['A. Rhabdovirus', 'B. Foot and Mouth Disease Virus', 'C. New Castle Disease Virus (NDV)', 'D. Rous Sarcoma Virus', 'E. CVPD'], correct: 'C', explanation: 'Penyakit Tetelo (Newcastle Disease) pada unggas disebabkan oleh NDV.' },
+            { id: 11, type: 'PG', section: 'A', score: 3, question: 'Penggunaan bakteriofag spesifik untuk membunuh bakteri patogen yang resisten antibiotik disebut...', options: ['A. Terapi Gen', 'B. Terapi Fag (Phage Therapy)', 'C. Kemoterapi', 'D. Vaksinasi RNA', 'E. Bioremediasi'], correct: 'B', explanation: 'Terapi Fag menggunakan bakteriofag spesifik untuk membasmi bakteri patogen.' },
+            { id: 12, type: 'PG', section: 'A', score: 3, question: 'Virus HIV menginfeksi dan merusak sistem kekebalan tubuh dengan menyerang...', options: ['A. Eritrosit', 'B. Trombosit', 'C. Sel Limfosit T (CD4+)', 'D. Sel Saraf Pusat', 'E. Sel epitel paru'], correct: 'C', explanation: 'HIV menginfeksi dan melumpuhkan sel Limfosit T (CD4+).' },
+            { id: 13, type: 'PG', section: 'A', score: 3, question: 'Gejala ruam merah dan lepuhan berair gatal di kulit disebabkan oleh infeksi...', options: ['A. Varicella-zoster Virus', 'B. Mumps Virus', 'C. Measles Virus', 'D. Hepatitis B Virus', 'E. Dengue Virus'], correct: 'A', explanation: 'Varicella-zoster Virus menyebabkan penyakit Cacar Air.' },
+            { id: 14, type: 'PG', section: 'A', score: 3, question: 'Penyakit Gondongan (Parotitis) ditandai pembengkakan pipi akibat Mumps Virus menyerang...', options: ['A. Hati', 'B. Kelenjar ludah (Parotis)', 'C. Sistem saraf pusat', 'D. Sel darah merah', 'E. Paru-paru'], correct: 'B', explanation: 'Mumps Virus menyebabkan peradangan pada kelenjar ludah (parotis).' },
+            { id: 15, type: 'PG', section: 'A', score: 3, question: 'Fogging saja tidak cukup menanggulangi DBD karena...', options: ['A. Fogging membunuh jentik tetapi bukan nyamuk dewasa', 'B. Fogging hanya membunuh nyamuk dewasa, tidak membunuh jentik nyamuk', 'C. Fogging membuat virus bermutasi', 'D. Fogging hanya efektif malam hari', 'E. Fogging membunuh bakteri'], correct: 'B', explanation: 'Fogging hanya membunuh nyamuk dewasa. Jentik-jentik di air tetap hidup sehingga PSN 3M Plus tetap wajib.' },
+            { id: 16, type: 'PG', section: 'A', score: 3, question: 'Mekanisme kerja utama dari vaksinasi adalah...', options: ['A. Membunuh langsung seluruh virus', 'B. Merangsang sistem imun membentuk antibodi spesifik dan sel memori', 'C. Menyerap racun di darah', 'D. Mengubah struktur sel tubuh', 'E. Menghancurkan dinding sel inang'], correct: 'B', explanation: 'Vaksin merangsang pembentukan antibodi spesifik dan memori imunologis.' },
+            { id: 17, type: 'PG', section: 'A', score: 3, question: 'Respon dokter ketika pasien Influenza meminta antibiotik adalah...', options: ['A. Memberikan antibiotik dosis tinggi', 'B. Menolak karena antibiotik hanya membunuh bakteri, bukan virus', 'C. Memberikan antibiotik untuk merangsang antibodi', 'D. Memberikan antibiotik agar virus tidak membelah', 'E. Menolak karena antibiotik hanya untuk jamur'], correct: 'B', explanation: 'Antibiotik bekerja pada struktur sel bakteri dan tidak efektif melawan virus.' },
+            { id: 18, type: 'PG', section: 'A', score: 3, question: 'Langkah pencegahan penularan Demam Berdarah yang paling tepat adalah...', options: ['A. Program PSN 3M Plus (Menguras, Menutup, Mendaur Ulang)', 'B. Membakar semua sampah plastik', 'C. Mengeringkan seluruh sungai', 'D. Meminum obat antivirus tiap minggu', 'E. Menutup seluruh jendela'], correct: 'A', explanation: 'Gerakan 3M Plus memutus rantai perkembangbiakan jentik nyamuk Aedes aegypti.' },
+            { id: 19, type: 'PG', section: 'A', score: 3, question: 'Mencuci tangan dengan sabun efektif mencegah Virus Corona karena...', options: ['A. Sabun merusak lapisan lipid (selubung) virus dan masker menahan droplet', 'B. Sabun memberi nutrisi kulit', 'C. Masker membunuh virus dengan panas', 'D. Menjaga jarak mematikan virus', 'E. Sabun membentuk eritrosit'], correct: 'A', explanation: 'Molekul sabun melarutkan selubung membran lipid pada virus enveloped.' },
+            { id: 20, type: 'PG', section: 'A', score: 3, question: 'Penyakit Mulut dan Kuku (PMK) pada sapi menyerang bagian...', options: ['A. Otak dan sumsum tulang', 'B. Mulut, lidah, kuku, dan kaki hewan ternak', 'C. Paru-paru dan ginjal', 'D. Hati dan darah', 'E. Jantung dan usus'], correct: 'B', explanation: 'PMK menimbulkan luka lepuh pada jaringan mukosa mulut, lidah, dan kuku ternak.' },
 
-            // ==========================================
             // BAGIAN B: BENAR / SALAH (21 - 30) @ 2 POIN
-            // ==========================================
-            {
-                id: 21,
-                type: 'BS',
-                section: 'B',
-                score: 2,
-                question: '<strong>Pernyataan:</strong> Virus tergolong parasit obligat intraseluler karena hanya dapat bereplikasi jika berada di dalam sel hidup yang menjadi inangnya.',
-                options: ['Benar', 'Salah'],
-                correct: 'Benar',
-                explanation: '<strong>BENAR.</strong> Virus membutuhkan sel hidup karena tidak memiliki organel metabolisme sendiri untuk bereplikasi.'
-            },
-            {
-                id: 22,
-                type: 'BS',
-                section: 'B',
-                score: 2,
-                question: '<strong>Pernyataan:</strong> Asam nukleat pada tubuh satu partikel virus terdiri dari DNA dan RNA yang berada secara bersamaan di dalam satu kapsid.',
-                options: ['Benar', 'Salah'],
-                correct: 'Salah',
-                explanation: '<strong>SALAH.</strong> Setiap partikel virus HANYA memiliki salah satu jenis asam nukleat saja (DNA saja ATAU RNA saja).'
-            },
-            {
-                id: 23,
-                type: 'BS',
-                section: 'B',
-                score: 2,
-                question: '<strong>Pernyataan:</strong> Pada tahap adsorpsi, serabut ekor virus menempel pada dinding sel atau membran sel inang yang memiliki reseptor spesifik.',
-                options: ['Benar', 'Salah'],
-                correct: 'Benar',
-                explanation: '<strong>BENAR.</strong> Tahap adsorpsi diawali dari ikatan spesifik antara serabut ekor virus dengan molekul reseptor di permukaan sel inang.'
-            },
-            {
-                id: 24,
-                type: 'BS',
-                section: 'B',
-                score: 2,
-                question: '<strong>Pernyataan:</strong> Sel inang pada siklus lisogenik akan langsung mati dan pecah (lisis) setelah proses penetrasi DNA virus selesai.',
-                options: ['Benar', 'Salah'],
-                correct: 'Salah',
-                explanation: '<strong>SALAH.</strong> Pada siklus lisogenik sel inang TIDAK langsung lisis/mati, melainkan tetap hidup dan membelah bersama DNA virus (profag).'
-            },
-            {
-                id: 25,
-                type: 'BS',
-                section: 'B',
-                score: 2,
-                question: '<strong>Pernyataan:</strong> Adenovirus merupakan jenis virus yang sering dimanfaatkan sebagai vektor pengantar materi genetik dalam pengembangan vaksin dan terapi gen.',
-                options: ['Benar', 'Salah'],
-                correct: 'Benar',
-                explanation: '<strong>BENAR.</strong> Adenovirus umum dipakai dalam bioteknologi sebagai vektor pembawa materi genetik target.'
-            },
-            {
-                id: 26,
-                type: 'BS',
-                section: 'B',
-                score: 2,
-                question: '<strong>Pernyataan:</strong> Penyakit Tungro pada tanaman padi ditularkan oleh vektor serangga wereng hijau (Nephotettix sp.) dan menyebabkan tanaman padi kerdil.',
-                options: ['Benar', 'Salah'],
-                correct: 'Benar',
-                explanation: '<strong>BENAR.</strong> Rice Tungro Virus ditularkan wereng hijau yang mengganggu pembuluh padi hingga kerdil dan daun kekuningan.'
-            },
-            {
-                id: 27,
-                type: 'BS',
-                section: 'B',
-                score: 2,
-                question: '<strong>Pernyataan:</strong> Terapi Fag (Phage Therapy) merupakan pengobatan penyakit virus dengan cara menyuntikkan virus jenis lain ke tubuh penderita.',
-                options: ['Benar', 'Salah'],
-                correct: 'Salah',
-                explanation: '<strong>SALAH.</strong> Terapi fag menggunakan bakteriofag untuk menginfeksi dan membunuh BAKTERI patogen, bukan virus lain.'
-            },
-            {
-                id: 28,
-                type: 'BS',
-                section: 'B',
-                score: 2,
-                question: '<strong>Pernyataan:</strong> Virus Dengue dapat ditularkan secara langsung dari manusia ke manusia melalui percikan air liur (droplet) saat bersin.',
-                options: ['Benar', 'Salah'],
-                correct: 'Salah',
-                explanation: '<strong>SALAH.</strong> Virus Dengue ditularkan melalui gigitan vektor nyamuk Aedes aegypti, bukan via droplet pernapasan.'
-            },
-            {
-                id: 29,
-                type: 'BS',
-                section: 'B',
-                score: 2,
-                question: '<strong>Pernyataan:</strong> Pemberian obat antibiotik kepada penderita DBD bertujuan untuk membunuh Virus Dengue yang beredar di dalam darah.',
-                options: ['Benar', 'Salah'],
-                correct: 'Salah',
-                explanation: '<strong>SALAH.</strong> Obat antibiotik hanya dapat membunuh bakteri dan tidak mempan terhadap virus Dengue.'
-            },
-            {
-                id: 30,
-                type: 'BS',
-                section: 'B',
-                score: 2,
-                question: '<strong>Pernyataan:</strong> Melakukan isolasi mandiri bagi individu yang terinfeksi virus menular merupakan tindakan preventif memutus penyebaran ke masyarakat.',
-                options: ['Benar', 'Salah'],
-                correct: 'Benar',
-                explanation: '<strong>BENAR.</strong> Isolasi mandiri secara fisik mencegah penyebaran kontak droplet dan aerosol penderita ke orang sehat.'
-            },
+            { id: 21, type: 'BS', section: 'B', score: 2, question: '<strong>Pernyataan:</strong> Virus tergolong parasit obligat intraseluler karena hanya dapat bereplikasi di dalam sel hidup.', options: ['Benar', 'Salah'], correct: 'Benar', explanation: '<strong>BENAR.</strong> Virus membutuhkan sel inang hidup untuk bereplikasi.' },
+            { id: 22, type: 'BS', section: 'B', score: 2, question: '<strong>Pernyataan:</strong> Satu partikel virus memiliki DNA dan RNA secara bersamaan di dalam kapsidnya.', options: ['Benar', 'Salah'], correct: 'Salah', explanation: '<strong>SALAH.</strong> Virus hanya memiliki salah satu jenis asam nukleat (DNA saja atau RNA saja).' },
+            { id: 23, type: 'BS', section: 'B', score: 2, question: '<strong>Pernyataan:</strong> Tahap adsorpsi diawali dengan penempelan serabut ekor virus pada reseptor spesifik sel inang.', options: ['Benar', 'Salah'], correct: 'Benar', explanation: '<strong>BENAR.</strong> Serabut ekor menempel pada reseptor spesifik permukaan sel inang.' },
+            { id: 24, type: 'BS', section: 'B', score: 2, question: '<strong>Pernyataan:</strong> Pada siklus lisogenik, sel inang langsung hancur/lisis setelah penetrasi DNA virus.', options: ['Benar', 'Salah'], correct: 'Salah', explanation: '<strong>SALAH.</strong> Pada siklus lisogenik sel inang tetap hidup dan membelah bersama profag.' },
+            { id: 25, type: 'BS', section: 'B', score: 2, question: '<strong>Pernyataan:</strong> Adenovirus sering dimanfaatkan sebagai vektor materi genetik dalam terapi gen dan vaksin.', options: ['Benar', 'Salah'], correct: 'Benar', explanation: '<strong>BENAR.</strong> Adenovirus umum digunakan sebagai vektor pembawa gen target.' },
+            { id: 26, type: 'BS', section: 'B', score: 2, question: '<strong>Pernyataan:</strong> Penyakit Tungro pada padi ditularkan oleh wereng hijau dan menyebabkan tanaman kerdil.', options: ['Benar', 'Salah'], correct: 'Benar', explanation: '<strong>BENAR.</strong> Tungro ditularkan oleh serangga wereng hijau.' },
+            { id: 27, type: 'BS', section: 'B', score: 2, question: '<strong>Pernyataan:</strong> Terapi Fag adalah pengobatan infeksi virus dengan menyuntikkan virus lain.', options: ['Benar', 'Salah'], correct: 'Salah', explanation: '<strong>SALAH.</strong> Terapi fag menggunakan bakteriofag untuk membunuh BAKTERI patogen.' },
+            { id: 28, type: 'BS', section: 'B', score: 2, question: '<strong>Pernyataan:</strong> Virus Dengue menular secara langsung antarmanusia melalui percikan batuk (droplet).', options: ['Benar', 'Salah'], correct: 'Salah', explanation: '<strong>SALAH.</strong> Virus Dengue ditularkan melalui gigitan nyamuk Aedes aegypti.' },
+            { id: 29, type: 'BS', section: 'B', score: 2, question: '<strong>Pernyataan:</strong> Pemberian antibiotik pada penderita DBD bertujuan membunuh virus Dengue.', options: ['Benar', 'Salah'], correct: 'Salah', explanation: '<strong>SALAH.</strong> Antibiotik tidak mempan melawan virus Dengue.' },
+            { id: 30, type: 'BS', section: 'B', score: 2, question: '<strong>Pernyataan:</strong> Isolasi mandiri merupakan langkah preventif efektif memutus penularan virus menular.', options: ['Benar', 'Salah'], correct: 'Benar', explanation: '<strong>BENAR.</strong> Isolasi mandiri mencegah kontak langsung dan penyebaran droplet.' },
 
-            // ==========================================
             // BAGIAN C: PG KOMPLEKS (31 - 35) @ 4 POIN
-            // ==========================================
-            {
-                id: 31,
-                type: 'PGK',
-                section: 'C',
-                score: 4,
-                question: 'Manakah dari pernyataan berikut yang merupakan ciri khas struktur dan sifat virus? <em>(Pilih lebih dari satu jawaban yang benar!)</em>',
-                options: [
-                    'A. Virus hanya memuat salah satu jenis asam nukleat saja (DNA saja atau RNA saja)',
-                    'B. Selubung pelindung materi genetik virus tersusun atas protein yang dinamakan kapsid',
-                    'C. Ukuran virus jauh lebih kecil dibandingkan sel bakteri (mikroskopis/ultramikroskopis)',
-                    'D. Virus dapat berkembang biak secara mandiri pada media cawan agar nutrisi tanpa sel hidup'
-                ],
-                correct: ['A', 'B', 'C'],
-                explanation: 'Pernyataan A, B, dan C BENAR. Pernyataan D SALAH karena virus adalah parasit obligat intraseluler yang HANYA bisa bereplikasi di dalam sel hidup.'
-            },
-            {
-                id: 32,
-                type: 'PGK',
-                section: 'C',
-                score: 4,
-                question: 'Perhatikan bagian-bagian Bakteriofag berikut beserta fungsinya! Pasangan yang BENAR adalah... <em>(Pilih lebih dari satu jawaban yang benar!)</em>',
-                options: [
-                    'A. Kapsid — Melindungi asam nukleat dan memberi bentuk tubuh virus',
-                    'B. Jarum Penusuk (Spike) — Menusuk membran sel inang saat penetrasi',
-                    'C. Papan Alas (Baseplate) — Tempat melekatnya serabut ekor dan jarum penusuk',
-                    'D. Serabut Ekor — Menyuntikkan asam nukleat secara langsung ke inti sel bakteri'
-                ],
-                correct: ['A', 'B', 'C'],
-                explanation: 'Pernyataan A, B, dan C BENAR. Pernyataan D SALAH karena serabut ekor berfungsi untuk adsorpsi (penempelan), sedangkan penyuntikan genom dilakukan via selubung ekor.'
-            },
-            {
-                id: 33,
-                type: 'PGK',
-                section: 'C',
-                score: 4,
-                question: 'Berikut merupakan pemanfaatan virus yang menguntungkan bagi kehidupan manusia... <em>(Pilih lebih dari satu jawaban yang benar!)</em>',
-                options: [
-                    'A. Vektor dalam teknologi rekayasa genetika dan terapi gen',
-                    'B. Bahan pembuatan antitoksin dan vaksin',
-                    'C. Agen biokontrol (terapi fag) untuk membasmi bakteri patogen',
-                    'D. Bioindikator pencemaran air limbah industri'
-                ],
-                correct: ['A', 'B', 'C'],
-                explanation: 'Pernyataan A, B, dan C BENAR sebagai peran menguntungkan virus di bidang kedokteran dan bioteknologi.'
-            },
-            {
-                id: 34,
-                type: 'PGK',
-                section: 'C',
-                score: 4,
-                question: 'Manakah penyakit pada hewan yang disebabkan oleh infeksi virus? <em>(Pilih lebih dari satu jawaban yang benar!)</em>',
-                options: [
-                    'A. Penyakit Mulut dan Kuku (PMK / FMD) pada sapi dan kambing',
-                    'B. Tetelo / New Castle Disease (ND) pada ayam',
-                    'C. Rabies pada anjing, kucing, dan kera',
-                    'D. Penyakit Anthrax pada sapi dan kerbau'
-                ],
-                correct: ['A', 'B', 'C'],
-                explanation: 'Pernyataan A, B, dan C BENAR. D SALAH karena Anthrax disebabkan oleh BAKTERI <em>Bacillus anthracis</em>.'
-            },
-            {
-                id: 35,
-                type: 'PGK',
-                section: 'C',
-                score: 4,
-                question: 'Mengapa kebiasaan mencuci tangan menggunakan sabun dan air mengalir efektif mencegah infeksi virus bercangkang lipid (seperti Corona dan Influenza)? <em>(Pilih lebih dari satu jawaban yang benar!)</em>',
-                options: [
-                    'A. Molekul sabun dapat merusak dan melarutkan lapisan selubung lipid (envelope) virus',
-                    'B. Gesekan saat mencuci tangan membantu meluruhkan partikel virus dari permukaan kulit',
-                    'C. Air mengalir membilas partikel virus yang terlepas sehingga hilang dari tangan',
-                    'D. Sabun mengandung zat antibiotik dosis tinggi pembunuh virus'
-                ],
-                correct: ['A', 'B', 'C'],
-                explanation: 'Pernyataan A, B, dan C BENAR. D SALAH karena sabun merusak selubung lipid virus secara fisik amfipatik, bukan mengandung antibiotik.'
-            }
+            { id: 31, type: 'PGK', section: 'C', score: 4, question: 'Manakah dari pernyataan berikut yang merupakan ciri khas struktur dan sifat virus? <em>(Pilih lebih dari satu jawaban!)</em>', options: ['A. Virus hanya memuat salah satu jenis asam nukleat (DNA atau RNA)', 'B. Selubung pelindung materi genetik virus tersusun atas protein (kapsid)', 'C. Ukuran virus jauh lebih kecil dibanding sel bakteri', 'D. Virus dapat berkembang biak mandiri pada media cawan agar tanpa sel hidup'], correct: ['A', 'B', 'C'], explanation: 'Pernyataan A, B, dan C BENAR. D SALAH karena virus memerlukan sel hidup.' },
+            { id: 32, type: 'PGK', section: 'C', score: 4, question: 'Perhatikan bagian Bakteriofag beserta fungsinya! Pasangan yang BENAR adalah... <em>(Pilih lebih dari satu jawaban!)</em>', options: ['A. Kapsid — Melindungi asam nukleat dan memberi bentuk virus', 'B. Jarum Penusuk (Spike) — Menusuk membran sel inang saat penetrasi', 'C. Baseplate — Tempat melekatnya serabut ekor dan jarum penusuk', 'D. Serabut Ekor — Menyuntikkan asam nukleat ke inti sel bakteri'], correct: ['A', 'B', 'C'], explanation: 'A, B, dan C BENAR. D SALAH karena serabut ekor berfungsi untuk penempelan (adsorpsi).' },
+            { id: 33, type: 'PGK', section: 'C', score: 4, question: 'Berikut merupakan pemanfaatan virus yang menguntungkan bagi manusia... <em>(Pilih lebih dari satu jawaban!)</em>', options: ['A. Vektor dalam teknologi rekayasa genetika dan terapi gen', 'B. Bahan pembuatan antitoksin dan vaksin', 'C. Agen biokontrol (terapi fag) untuk membunuh bakteri patogen', 'D. Bioindikator pencemaran air limbah'], correct: ['A', 'B', 'C'], explanation: 'A, B, dan C BENAR sebagai peran positif virus di bidang kesehatan.' },
+            { id: 34, type: 'PGK', section: 'C', score: 4, question: 'Manakah penyakit pada hewan yang disebabkan oleh infeksi virus? <em>(Pilih lebih dari satu jawaban!)</em>', options: ['A. Penyakit Mulut dan Kuku (PMK) pada sapi', 'B. Tetelo / New Castle Disease (ND) pada ayam', 'C. Rabies pada anjing, kucing, dan kera', 'D. Penyakit Anthrax pada sapi'], correct: ['A', 'B', 'C'], explanation: 'A, B, C BENAR. D SALAH karena Anthrax disebabkan oleh BAKTERI Bacillus anthracis.' },
+            { id: 35, type: 'PGK', section: 'C', score: 4, question: 'Mengapa mencuci tangan dengan sabun efektif mencegah infeksi virus selubung lipid? <em>(Pilih lebih dari satu jawaban!)</em>', options: ['A. Sabun merusak dan melarutkan lapisan selubung lipid (envelope) virus', 'B. Gesekan saat cuci tangan meluruhkan partikel virus dari kulit', 'C. Air mengalir membilas partikel virus yang terlepas', 'D. Sabun mengandung antibiotik pembunuh virus'], correct: ['A', 'B', 'C'], explanation: 'A, B, dan C BENAR. D SALAH karena sabun bekerja melarutkan lipid secara fisik, bukan dengan antibiotik.' }
         ];
 
         // APP STATE MANAGEMENT
         let currentQuestionIndex = 0;
-        let userAnswers = {}; // { qId: answerValue }
-        let raguAnswers = {}; // { qId: boolean }
+        let userAnswers = {};
+        let raguAnswers = {};
         let timerInterval = null;
-        let timeRemaining = 60 * 60; // 60 minutes in seconds
+        let timeRemaining = 60 * 60;
         let studentProfile = {};
 
         const STORAGE_KEY = 'biologi_virus_exam_submission_v1';
-        const GURU_PIN = '1234'; // Default PIN Keamanan Guru
+        const GURU_PIN = '1234'; // PIN Akses Guru
 
         // DOM ELEMENTS
         const screenWelcome = document.getElementById('screen-welcome');
-        // TEACHER DASHBOARD SECURITY LOGIC
+        const screenQuiz = document.getElementById('screen-quiz');
+        const screenResult = document.getElementById('screen-result');
+        const screenGuru = document.getElementById('screen-teacher-dashboard');
+        const headerInfo = document.getElementById('header-quiz-info');
+        
         const btnOpenGuru = document.getElementById('btn-open-teacher-dashboard');
         const btnCloseGuru = document.getElementById('btn-close-teacher-dashboard');
-        const screenGuru = document.getElementById('screen-teacher-dashboard');
         const modalPinGuru = document.getElementById('modal-pin-guru');
         const formPinGuru = document.getElementById('form-pin-guru');
         const inputPinGuru = document.getElementById('input-pin-guru');
         const pinErrorMsg = document.getElementById('pin-error-msg');
         const btnCancelPin = document.getElementById('btn-cancel-pin');
 
-        let pendingTeacherAction = null; // 'open_dashboard' or 'reset_exam'
+        let pendingTeacherAction = null;
 
+        // CHECK EXISTING SUBMISSION ON LOAD
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedData = localStorage.getItem(STORAGE_KEY);
+            if (savedData) {
+                try {
+                    const parsed = JSON.parse(savedData);
+                    showResultsScreen(parsed);
+                } catch(e) {
+                    console.error('Error reading saved submission', e);
+                }
+            }
+        });
+
+        // FORM IDENTITY SUBMIT
+        document.getElementById('form-identity').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            studentProfile = {
+                nama: document.getElementById('input-nama').value.trim(),
+                kelas: document.getElementById('input-kelas').value,
+                absen: document.getElementById('input-absen').value.trim(),
+                nisn: document.getElementById('input-nisn').value.trim()
+            };
+
+            document.getElementById('header-student-name').textContent = studentProfile.nama;
+            
+            screenWelcome.classList.add('hidden');
+            screenQuiz.classList.remove('hidden');
+            headerInfo.classList.remove('hidden');
+
+            initExamWorkspace();
+        });
+
+        function initExamWorkspace() {
+            renderNavGrid();
+            loadQuestion(0);
+            startTimer();
+        }
+
+        function startTimer() {
+            if (timerInterval) clearInterval(timerInterval);
+            const timerDisplay = document.getElementById('timer-display');
+            
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                const mins = Math.floor(timeRemaining / 60);
+                const secs = timeRemaining % 60;
+                timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    alert('Waktu ujian telah habis! Jawaban Anda akan otomatis dikumpulkan.');
+                    processExamSubmission();
+                }
+            }, 1000);
+        }
+
+        function renderNavGrid() {
+            const grid = document.getElementById('nav-grid');
+            grid.innerHTML = '';
+
+            QUESTIONS_DATA.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.id = `nav-btn-${idx}`;
+                btn.className = getNavBtnClass(idx);
+                btn.textContent = idx + 1;
+                btn.onclick = () => loadQuestion(idx);
+                grid.appendChild(btn);
+            });
+
+            updateAnsweredCounter();
+        }
+
+        function getNavBtnClass(idx) {
+            const qId = QUESTIONS_DATA[idx].id;
+            const isAnswered = userAnswers[qId] !== undefined && userAnswers[qId] !== null && userAnswers[qId] !== '' && (!Array.isArray(userAnswers[qId]) || userAnswers[qId].length > 0);
+            const isRagu = raguAnswers[qId];
+            const isCurrent = currentQuestionIndex === idx;
+
+            let base = "w-full h-9 rounded-lg text-xs font-bold transition-all flex items-center justify-center border ";
+
+            if (isCurrent) {
+                base += "ring-2 ring-sky-600 ring-offset-1 ";
+            }
+
+            if (isRagu) {
+                return base + "bg-amber-400 border-amber-500 text-amber-950 font-black";
+            } else if (isAnswered) {
+                return base + "bg-sky-600 border-sky-700 text-white";
+            } else {
+                return base + "bg-slate-100 hover:bg-slate-200 border-slate-300 text-slate-700";
+            }
+        }
+
+        function updateNavGridStyle() {
+            QUESTIONS_DATA.forEach((_, idx) => {
+                const btn = document.getElementById(`nav-btn-${idx}`);
+                if (btn) btn.className = getNavBtnClass(idx);
+            });
+            updateAnsweredCounter();
+        }
+
+        function updateAnsweredCounter() {
+            let count = 0;
+            QUESTIONS_DATA.forEach(q => {
+                const ans = userAnswers[q.id];
+                if (ans !== undefined && ans !== null && ans !== '' && (!Array.isArray(ans) || ans.length > 0)) {
+                    count++;
+                }
+            });
+            document.getElementById('answered-counter').textContent = `${count} / 35 Terjawab`;
+        }
+
+        function loadQuestion(index) {
+            currentQuestionIndex = index;
+            const q = QUESTIONS_DATA[index];
+
+            document.getElementById('badge-question-number').textContent = `Soal #${index + 1}`;
+            document.getElementById('badge-question-type').textContent = q.type === 'PG' ? 'Pilihan Ganda' : (q.type === 'BS' ? 'Benar / Salah' : 'PG Kompleks');
+            document.getElementById('badge-question-score').textContent = `Bobot: ${q.score} Poin`;
+            document.getElementById('question-text').innerHTML = q.question;
+
+            // Ragu state
+            const checkRagu = document.getElementById('check-ragu');
+            checkRagu.checked = !!raguAnswers[q.id];
+            checkRagu.onchange = (e) => {
+                raguAnswers[q.id] = e.target.checked;
+                updateNavGridStyle();
+            };
+
+            // Render Options
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+
+            const currentAns = userAnswers[q.id];
+
+            if (q.type === 'PG' || q.type === 'BS') {
+                q.options.forEach(opt => {
+                    const isSelected = currentAns === (q.type === 'PG' ? opt.charAt(0) : opt);
+                    const optVal = q.type === 'PG' ? opt.charAt(0) : opt;
+
+                    const label = document.createElement('label');
+                    label.className = `p-3.5 sm:p-4 rounded-xl border-2 transition-all flex items-center space-x-3 cursor-pointer ${
+                        isSelected ? 'bg-sky-50 border-sky-600 text-sky-950 font-semibold shadow-sm' : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    }`;
+
+                    label.innerHTML = `
+                        <input type="radio" name="option-choice" value="${optVal}" ${isSelected ? 'checked' : ''} class="w-4 h-4 text-sky-600 focus:ring-sky-500 border-slate-300">
+                        <span class="text-sm leading-relaxed">${opt}</span>
+                    `;
+
+                    label.onclick = () => {
+                        userAnswers[q.id] = optVal;
+                        loadQuestion(currentQuestionIndex);
+                        updateNavGridStyle();
+                    };
+
+                    container.appendChild(label);
+                });
+            } else if (q.type === 'PGK') {
+                const selectedList = Array.isArray(currentAns) ? currentAns : [];
+
+                q.options.forEach(opt => {
+                    const optKey = opt.charAt(0);
+                    const isChecked = selectedList.includes(optKey);
+
+                    const label = document.createElement('label');
+                    label.className = `p-3.5 sm:p-4 rounded-xl border-2 transition-all flex items-center space-x-3 cursor-pointer ${
+                        isChecked ? 'bg-purple-50 border-purple-600 text-purple-950 font-semibold shadow-sm' : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700'
+                    }`;
+
+                    label.innerHTML = `
+                        <input type="checkbox" value="${optKey}" ${isChecked ? 'checked' : ''} class="w-4 h-4 text-purple-600 focus:ring-purple-500 rounded border-slate-300">
+                        <span class="text-sm leading-relaxed">${opt}</span>
+                    `;
+
+                    label.onclick = (e) => {
+                        e.preventDefault();
+                        let updated = [...(Array.isArray(userAnswers[q.id]) ? userAnswers[q.id] : [])];
+                        if (updated.includes(optKey)) {
+                            updated = updated.filter(item => item !== optKey);
+                        } else {
+                            updated.push(optKey);
+                        }
+                        userAnswers[q.id] = updated;
+                        loadQuestion(currentQuestionIndex);
+                        updateNavGridStyle();
+                    };
+
+                    container.appendChild(label);
+                });
+            }
+
+            // Navigation Buttons visibility
+            const btnPrev = document.getElementById('btn-prev');
+            const btnNext = document.getElementById('btn-next');
+            const btnSubmit = document.getElementById('btn-submit-exam');
+
+            btnPrev.disabled = index === 0;
+
+            if (index === QUESTIONS_DATA.length - 1) {
+                btnNext.classList.add('hidden');
+                btnSubmit.classList.remove('hidden');
+            } else {
+                btnNext.classList.remove('hidden');
+                btnSubmit.classList.add('hidden');
+            }
+
+            updateNavGridStyle();
+        }
+
+        document.getElementById('btn-prev').onclick = () => {
+            if (currentQuestionIndex > 0) loadQuestion(currentQuestionIndex - 1);
+        };
+
+        document.getElementById('btn-next').onclick = () => {
+            if (currentQuestionIndex < QUESTIONS_DATA.length - 1) loadQuestion(currentQuestionIndex + 1);
+        };
+
+        // SUBMIT EXAM MODAL HANDLERS
+        const modalConfirm = document.getElementById('modal-confirm');
+        const btnSubmitExam = document.getElementById('btn-submit-exam');
+        const btnFinishSidebar = document.getElementById('btn-finish-sidebar');
+        const btnModalCancel = document.getElementById('btn-modal-cancel');
+        const btnModalConfirm = document.getElementById('btn-modal-confirm');
+
+        btnSubmitExam.onclick = () => modalConfirm.classList.remove('hidden');
+        btnFinishSidebar.onclick = () => modalConfirm.classList.remove('hidden');
+        btnModalCancel.onclick = () => modalConfirm.classList.add('hidden');
+
+        btnModalConfirm.onclick = () => {
+            modalConfirm.classList.add('hidden');
+            processExamSubmission();
+        };
+
+        function processExamSubmission() {
+            if (timerInterval) clearInterval(timerInterval);
+
+            let pgScore = 0;   // Max 60 (20 * 3)
+            let bsScore = 0;   // Max 20 (10 * 2)
+            let pgkScore = 0;  // Max 20 (5 * 4)
+
+            QUESTIONS_DATA.forEach(q => {
+                const uAns = userAnswers[q.id];
+
+                if (q.type === 'PG') {
+                    if (uAns === q.correct) pgScore += q.score;
+                } else if (q.type === 'BS') {
+                    if (uAns === q.correct) bsScore += q.score;
+                } else if (q.type === 'PGK') {
+                    if (Array.isArray(uAns)) {
+                        const sortedUser = [...uAns].sort().join(',');
+                        const sortedKey = [...q.correct].sort().join(',');
+                        if (sortedUser === sortedKey) {
+                            pgkScore += q.score;
+                        }
+                    }
+                }
+            });
+
+            const totalScore = pgScore + bsScore + pgkScore;
+
+            const examRecord = {
+                studentProfile: studentProfile,
+                userAnswers: userAnswers,
+                scores: {
+                    pg: pgScore,
+                    bs: bsScore,
+                    pgk: pgkScore,
+                    total: totalScore
+                },
+                submittedAt: new Date().toLocaleString('id-ID')
+            };
+
+            // Lock submission to localStorage
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(examRecord));
+
+            // Save to teacher local storage list
+            saveSubmissionToCloud(examRecord);
+
+            // Render result screen
+            showResultsScreen(examRecord);
+        }
+
+        function saveSubmissionToCloud(record) {
+            let localList = JSON.parse(localStorage.getItem('guru_rekap_list_v1') || '[]');
+            
+            const existingIdx = localList.findIndex(item => 
+                (item.studentProfile?.nisn && item.studentProfile?.nisn === record.studentProfile?.nisn) ||
+                (item.studentProfile?.nama === record.studentProfile?.nama && item.studentProfile?.kelas === record.studentProfile?.kelas)
+            );
+
+            if (existingIdx >= 0) {
+                localList[existingIdx] = record;
+            } else {
+                localList.push(record);
+            }
+
+            localStorage.setItem('guru_rekap_list_v1', JSON.stringify(localList));
+        }
+
+        function showResultsScreen(record) {
+            screenWelcome.classList.add('hidden');
+            screenQuiz.classList.add('hidden');
+            headerInfo.classList.add('hidden');
+            screenResult.classList.remove('hidden');
+
+            const scores = record.scores || { pg: 0, bs: 0, pgk: 0, total: 0 };
+            const profile = record.studentProfile || {};
+
+            document.getElementById('res-student-name').textContent = profile.nama || '-';
+            document.getElementById('res-student-class').textContent = `${profile.kelas || '-'} / Absen ${profile.absen || '-'}`;
+            document.getElementById('res-student-nisn').textContent = profile.nisn || '-';
+
+            document.getElementById('final-total-score').textContent = scores.total;
+
+            const statusBadge = document.getElementById('result-status-badge');
+            const kkmText = document.getElementById('kkm-result-text');
+
+            if (scores.total >= 85) {
+                statusBadge.textContent = "SANGAT BAIK";
+                statusBadge.className = "px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40";
+                kkmText.textContent = "LULUS / SANGAT BAIK";
+                kkmText.className = "font-bold text-emerald-600";
+            } else if (scores.total >= 75) {
+                statusBadge.textContent = "LULUS / CUKUP";
+                statusBadge.className = "px-3 py-1 rounded-full text-xs font-extrabold bg-sky-500/20 text-sky-300 border border-sky-500/40";
+                kkmText.textContent = "TUNTAS (LULUS KKM)";
+                kkmText.className = "font-bold text-sky-600";
+            } else {
+                statusBadge.textContent = "PERLU REMIDI";
+                statusBadge.className = "px-3 py-1 rounded-full text-xs font-extrabold bg-rose-500/20 text-rose-300 border border-rose-500/40";
+                kkmText.textContent = "BELUM TUNTAS (< 75)";
+                kkmText.className = "font-bold text-rose-600";
+            }
+
+            document.getElementById('score-pg-text').textContent = `${scores.pg} / 60 Poin`;
+            document.getElementById('bar-pg').style.width = `${(scores.pg / 60) * 100}%`;
+
+            document.getElementById('score-bs-text').textContent = `${scores.bs} / 20 Poin`;
+            document.getElementById('bar-bs').style.width = `${(scores.bs / 20) * 100}%`;
+
+            document.getElementById('score-pgk-text').textContent = `${scores.pgk} / 20 Poin`;
+            document.getElementById('bar-pgk').style.width = `${(scores.pgk / 20) * 100}%`;
+
+            renderPembahasanList(record.userAnswers || {});
+        }
+
+        function renderPembahasanList(answers) {
+            const container = document.getElementById('pembahasan-list');
+            container.innerHTML = '';
+
+            QUESTIONS_DATA.forEach((q, idx) => {
+                const userAns = answers[q.id];
+                let isCorrect = false;
+
+                if (q.type === 'PG' || q.type === 'BS') {
+                    isCorrect = userAns === q.correct;
+                } else if (q.type === 'PGK') {
+                    if (Array.isArray(userAns)) {
+                        const sortedUser = [...userAns].sort().join(',');
+                        const sortedKey = [...q.correct].sort().join(',');
+                        isCorrect = sortedUser === sortedKey;
+                    }
+                }
+
+                let userAnsText = '-';
+                if (userAns !== undefined && userAns !== null) {
+                    if (Array.isArray(userAns)) {
+                        userAnsText = userAns.length > 0 ? userAns.join(', ') : 'Tidak Dijawab';
+                    } else {
+                        userAnsText = userAns;
+                    }
+                } else {
+                    userAnsText = 'Tidak Dijawab';
+                }
+
+                let correctAnsText = Array.isArray(q.correct) ? q.correct.join(', ') : q.correct;
+
+                const card = document.createElement('div');
+                card.className = `p-4 sm:p-5 rounded-2xl border ${
+                    isCorrect ? 'bg-emerald-50/40 border-emerald-200' : 'bg-rose-50/40 border-rose-200'
+                } space-y-3`;
+
+                card.innerHTML = `
+                    <div class="flex flex-wrap justify-between items-center gap-2">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2.5 py-1 text-xs font-bold rounded-lg ${
+                                isCorrect ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'
+                            }">Soal #${idx + 1}</span>
+                            <span class="text-xs font-semibold text-slate-600 bg-white px-2.5 py-1 rounded-lg border border-slate-200">
+                                ${q.type === 'PG' ? 'Pilihan Ganda' : (q.type === 'BS' ? 'Benar / Salah' : 'PG Kompleks')}
+                            </span>
+                        </div>
+
+                        <span class="text-xs font-bold ${isCorrect ? 'text-emerald-700' : 'text-rose-700'} flex items-center gap-1">
+                            <i class="fa-solid ${isCorrect ? 'fa-circle-check' : 'fa-circle-xmark'}"></i>
+                            ${isCorrect ? `BENAR (+${q.score} Poin)` : 'SALAH (0 Poin)'}
+                        </span>
+                    </div>
+
+                    <div class="text-sm font-semibold text-slate-800 leading-relaxed">
+                        ${q.question}
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
+                        <div class="p-2.5 rounded-xl border ${isCorrect ? 'bg-emerald-100/50 border-emerald-300 text-emerald-950' : 'bg-rose-100/50 border-rose-300 text-rose-950'}">
+                            <span class="block font-bold text-[11px] uppercase tracking-wider mb-0.5 opacity-80">Jawaban Anda:</span>
+                            <span class="font-bold text-sm">${userAnsText}</span>
+                        </div>
+                        <div class="p-2.5 bg-slate-100 border border-slate-300 text-slate-900 rounded-xl">
+                            <span class="block font-bold text-[11px] uppercase tracking-wider mb-0.5 text-slate-500">Kunci Jawaban Resmi:</span>
+                            <span class="font-bold text-sm text-sky-800">${correctAnsText}</span>
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
+                        <div class="font-bold text-sky-900 flex items-center gap-1.5">
+                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Pembahasan:
+                        </div>
+                        <p class="leading-relaxed text-slate-600">${q.explanation}</p>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+        }
+
+        // TEACHER SECURITY & DASHBOARD RENDER LOGIC
         btnOpenGuru.onclick = () => {
             pendingTeacherAction = 'open_dashboard';
             inputPinGuru.value = '';
@@ -1119,84 +1086,27 @@
         };
 
         function renderTeacherDashboard() {
-        // PROCESS SCORE & SAVE TO LOCALSTORAGE
-        function processExamSubmission() {
-            if (timerInterval) clearInterval(timerInterval);
+            let list = JSON.parse(localStorage.getItem('guru_rekap_list_v1') || '[]');
+            
+            const searchVal = (document.getElementById('filter-search')?.value || '').toLowerCase();
+            const classVal = document.getElementById('filter-class-guru')?.value || '';
 
-            let pgScore = 0;   // Max 60 (20 * 3)
-            let bsScore = 0;   // Max 20 (10 * 2)
-            let pgkScore = 0;  // Max 20 (5 * 4)
-
-            QUESTIONS_DATA.forEach(q => {
-                const uAns = userAnswers[q.id];
-
-                if (q.type === 'PG') {
-                    if (uAns === q.correct) pgScore += q.score;
-                } else if (q.type === 'BS') {
-                    if (uAns === q.correct) bsScore += q.score;
-                } else if (q.type === 'PGK') {
-                    if (Array.isArray(uAns)) {
-                        const sortedUser = [...uAns].sort().join(',');
-                        const sortedKey = [...q.correct].sort().join(',');
-                        if (sortedUser === sortedKey) {
-                            pgkScore += q.score;
-                        }
-                    }
-                }
+            const filtered = list.filter(item => {
+                const p = item.studentProfile || {};
+                const matchSearch = (p.nama || '').toLowerCase().includes(searchVal) || (p.nisn || '').toLowerCase().includes(searchVal);
+                const matchClass = !classVal || p.kelas === classVal;
+                return matchSearch && matchClass;
             });
 
-            const totalScore = pgScore + bsScore + pgkScore;
+            // Update Stats
+            const total = filtered.length;
+            const avg = total > 0 ? (filtered.reduce((sum, item) => sum + (item.scores?.total || 0), 0) / total).toFixed(1) : '0.0';
+            const passedCount = filtered.filter(item => (item.scores?.total || 0) >= 75).length;
+            const passRate = total > 0 ? Math.round((passedCount / total) * 100) : 0;
 
-            const examRecord = {
-                studentProfile: studentProfile,
-                userAnswers: userAnswers,
-                scores: {
-                    pg: pgScore,
-                    bs: bsScore,
-                    pgk: pgkScore,
-                    total: totalScore
-                },
-                submittedAt: new Date().toLocaleString('id-ID')
-            };
-
-            // Save lock to localStorage
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(examRecord));
-
-            saveSubmissionToCloud(examRecord);
-
-            // Display Results
-            showResultsScreen(examRecord);
-        }
-
-        function saveSubmissionToCloud(record) {
-            // Save to local cached list for immediate teacher preview
-            let localList = JSON.parse(localStorage.getItem('guru_rekap_list_v1') || '[]');
-            
-            // Check if student with same NISN/Name already in list, update or append
-            const existingIdx = localList.findIndex(item => 
-                (item.studentProfile?.nisn && item.studentProfile?.nisn === record.studentProfile?.nisn) ||
-                (item.studentProfile?.nama === record.studentProfile?.nama && item.studentProfile?.kelas === record.studentProfile?.kelas)
-            );
-
-            if (existingIdx >= 0) {
-                localList[existingIdx] = record;
-            } else {
-                localList.push(record);
-            }
-
-            localStorage.setItem('guru_rekap_list_v1', JSON.stringify(localList));
-
-            // Optional Firebase Sync if available
-            try {
-                if (window.db) {
-                    const docId = `${record.studentProfile.nisn || Date.now()}`;
-                    window.setDoc(window.doc(window.db, 'artifacts', window.appId, 'public', 'data', 'submissions', docId), record)
-                        .catch(err => console.log('Cloud sync info:', err));
-                }
-            } catch (e) {
-                console.log('Running in local mode:', e);
-            }
-        }
+            document.getElementById('stat-total-students').textContent = `${total} Siswa`;
+            document.getElementById('stat-avg-score').textContent = avg;
+            document.getElementById('stat-pass-rate').textContent = `${passRate}%`;
 
             // Render Table
             const tbody = document.getElementById('table-guru-body');
@@ -1288,152 +1198,7 @@
             alert('Ringkasan nilai berhasil disalin ke clipboard!');
         };
 
-        function showResultsScreen(record) {
-            screenWelcome.classList.add('hidden');
-            screenQuiz.classList.add('hidden');
-            headerInfo.classList.add('hidden');
-            screenResult.classList.remove('hidden');
-
-            const scores = record.scores || { pg: 0, bs: 0, pgk: 0, total: 0 };
-            const profile = record.studentProfile || {};
-
-            // Render Header Info
-            document.getElementById('res-student-name').textContent = profile.nama || '-';
-            document.getElementById('res-student-class').textContent = `${profile.kelas || '-'} / Absen ${profile.absen || '-'}`;
-            document.getElementById('res-student-nisn').textContent = profile.nisn || '-';
-
-            // Render Total Score
-            document.getElementById('final-total-score').textContent = scores.total;
-
-            // KKM Badge & Predikat
-            const statusBadge = document.getElementById('result-status-badge');
-            const kkmText = document.getElementById('kkm-result-text');
-
-            if (scores.total >= 85) {
-                statusBadge.textContent = "SANGAT BAIK";
-                statusBadge.className = "px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40";
-                kkmText.textContent = "LULUS / SANGAT BAIK";
-                kkmText.className = "font-bold text-emerald-600";
-            } else if (scores.total >= 75) {
-                statusBadge.textContent = "LULUS / CUKUP";
-                statusBadge.className = "px-3 py-1 rounded-full text-xs font-extrabold bg-sky-500/20 text-sky-300 border border-sky-500/40";
-                kkmText.textContent = "TUNTAS (LULUS KKM)";
-                kkmText.className = "font-bold text-sky-600";
-            } else {
-                statusBadge.textContent = "PERLU REMIDI";
-                statusBadge.className = "px-3 py-1 rounded-full text-xs font-extrabold bg-rose-500/20 text-rose-300 border border-rose-500/40";
-                kkmText.textContent = "BELUM TUNTAS (< 75)";
-                kkmText.className = "font-bold text-rose-600";
-            }
-
-            // Category Scores & Progress Bars
-            document.getElementById('score-pg-text').textContent = `${scores.pg} / 60 Poin`;
-            document.getElementById('bar-pg').style.width = `${(scores.pg / 60) * 100}%`;
-
-            document.getElementById('score-bs-text').textContent = `${scores.bs} / 20 Poin`;
-            document.getElementById('bar-bs').style.width = `${(scores.bs / 20) * 100}%`;
-
-            document.getElementById('score-pgk-text').textContent = `${scores.pgk} / 20 Poin`;
-            document.getElementById('bar-pgk').style.width = `${(scores.pgk / 20) * 100}%`;
-
-            // Render Pembahasan
-            renderPembahasanList(record.userAnswers || {});
-        }
-
-        // RENDER PEMBAHASAN SOAL LENGKAP
-        function renderPembahasanList(answers) {
-            const container = document.getElementById('pembahasan-list');
-            container.innerHTML = '';
-
-            QUESTIONS_DATA.forEach((q, idx) => {
-                const userAns = answers[q.id];
-                let isCorrect = false;
-
-                if (q.type === 'PG' || q.type === 'BS') {
-                    isCorrect = userAns === q.correct;
-                } else if (q.type === 'PGK') {
-                    if (Array.isArray(userAns)) {
-                        const sortedUser = [...userAns].sort().join(',');
-                        const sortedKey = [...q.correct].sort().join(',');
-                        isCorrect = sortedUser === sortedKey;
-                    }
-                }
-
-                // Format User Answer Text
-                let userAnsText = '-';
-                if (userAns !== undefined && userAns !== null) {
-                    if (Array.isArray(userAns)) {
-                        userAnsText = userAns.length > 0 ? userAns.join(', ') : 'Tidak Dijawab';
-                    } else {
-                        userAnsText = userAns;
-                    }
-                } else {
-                    userAnsText = 'Tidak Dijawab';
-                }
-
-                // Format Correct Answer Text
-                let correctAnsText = Array.isArray(q.correct) ? q.correct.join(', ') : q.correct;
-
-                const card = document.createElement('div');
-                card.className = `p-4 sm:p-5 rounded-2xl border ${
-                    isCorrect ? 'bg-emerald-50/40 border-emerald-200' : 'bg-rose-50/40 border-rose-200'
-                } space-y-3`;
-
-                card.innerHTML = `
-                    <div class="flex flex-wrap justify-between items-center gap-2">
-                        <div class="flex items-center gap-2">
-                            <span class="px-2.5 py-1 text-xs font-bold rounded-lg ${
-                                isCorrect ? 'bg-emerald-600 text-white' : 'bg-rose-600 text-white'
-                            }">Soal #${idx + 1}</span>
-                            <span class="text-xs font-semibold text-slate-600 bg-white px-2.5 py-1 rounded-lg border border-slate-200">
-                                ${q.type === 'PG' ? 'Pilihan Ganda' : (q.type === 'BS' ? 'Benar / Salah' : 'PG Kompleks')}
-                            </span>
-                        </div>
-
-                        <span class="text-xs font-bold ${isCorrect ? 'text-emerald-700' : 'text-rose-700'} flex items-center gap-1">
-                            <i class="fa-solid ${isCorrect ? 'fa-circle-check' : 'fa-circle-xmark'}"></i>
-                            ${isCorrect ? `BENAR (+${q.score} Poin)` : 'SALAH (0 Poin)'}
-                        </span>
-                    </div>
-
-                    <div class="text-sm font-semibold text-slate-800 leading-relaxed">
-                        ${q.question}
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
-                        <div class="p-2.5 rounded-xl border ${isCorrect ? 'bg-emerald-100/50 border-emerald-300 text-emerald-950' : 'bg-rose-100/50 border-rose-300 text-rose-950'}">
-                            <span class="block font-bold text-[11px] uppercase tracking-wider mb-0.5 opacity-80">Jawaban Anda:</span>
-                            <span class="font-bold text-sm">${userAnsText}</span>
-                        </div>
-                        <div class="p-2.5 bg-slate-100 border border-slate-300 text-slate-900 rounded-xl">
-                            <span class="block font-bold text-[11px] uppercase tracking-wider mb-0.5 text-slate-500">Kunci Jawaban Resmi:</span>
-                            <span class="font-bold text-sm text-sky-800">${correctAnsText}</span>
-                        </div>
-                    </div>
-
-                    <div class="p-3 bg-white rounded-xl border border-slate-200 text-xs text-slate-700 space-y-1">
-                        <div class="font-bold text-sky-900 flex items-center gap-1.5">
-                            <i class="fa-solid fa-lightbulb text-amber-500"></i> Pembahasan:
-                        </div>
-                        <p class="leading-relaxed text-slate-600">${q.explanation}</p>
-                    </div>
-                `;
-
-                container.appendChild(card);
-            });
-        }
-
-        // RESET DEMO FOR TEACHER / SIMULATION
-        document.getElementById('btn-reset-demo').onclick = () => {
-            if (confirm('Konfirmasi Guru / Simulasi: Apakah Anda ingin menghapus rekaman ulangan ini untuk mencoba kembali?')) {
-                localStorage.removeItem(STORAGE_KEY);
-                location.reload();
-            }
-        };
-    </script>
-</body>
-</html>
-        // RESET DEMO FOR TEACHER / SIMULATION (PROTECTED BY PIN)
+        // RESET DEMO FOR TEACHER (PROTECTED BY PIN)
         document.getElementById('btn-reset-demo').onclick = () => {
             pendingTeacherAction = 'reset_exam';
             inputPinGuru.value = '';
